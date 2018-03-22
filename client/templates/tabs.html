@@ -1,32 +1,27 @@
 
 <!--标题栏-->
-<ion-header-bar align-title="left" class="bar-positive" style="background-color: #373b3e">
+<!--<ion-header-bar align-title="left" class="bar-positive" style="background-color: #373b3e">
 
-    <h1 class="title">微信</h1>
+    <h1 class="title">iNeedU</h1>
     <div class="buttons" ng-controller="TitleController">
         <a class="button button-icon icon ion-search headerIcon" ng-click="searchAction()"></a>
-        <a class="button button-icon icon  ion-plus-round headerIcon" ng-click="addAction($event)"></a>
+        &lt;!&ndash;<a class="button button-icon icon  ion-plus-round headerIcon" ng-click="addAction($event)"></a>&ndash;&gt;
     </div>
 
-</ion-header-bar>
+</ion-header-bar>-->
 
 <!--tab按钮-->
 <ion-tabs class="tabs-icon-top " >
 
-    <ion-tab title="微信" icon="ion-chatbubble-working" href="#/tab/home" >
+    <ion-tab title="首页" icon="ion-chatbubble-working" href="#/tab/home" >
         <ion-nav-view name="home-tab"></ion-nav-view>
     </ion-tab>
 
-
-    <ion-tab title="联系人" icon="ion-person-stalker" ui-sref="tabs.contact" >
-        <ion-nav-view name="contact-tab"></ion-nav-view>
-    </ion-tab>
-
-    <ion-tab title="发现" icon="ion-android-compass" href="#/tab/find" badge="12" badge-style="badge-assertive">
+    <ion-tab title="发现" icon="ion-android-compass" href="#/tab/find" >
         <ion-nav-view name="find-tab"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="我" icon="ion-android-person" href="#/tab/mine">
+    <ion-tab title="我的" icon="ion-android-person" href="#/tab/mine">
         <ion-nav-view name="mine-tab"></ion-nav-view>
     </ion-tab>
 
