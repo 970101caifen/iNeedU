@@ -1,0 +1,91 @@
+<ion-modal-view>
+    <ion-header-bar align-title="center" class="bar-calm header" style="background-color:#8ba34c;">
+        <a class="button icon ion-chevron-left" ng-click="userRegister.hide()" style="background-color:#8ba34c;border: 1px solid #8ba34c;"></a>
+        <h1 class="title" style="color: white;">注册</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="userRegisterCtrl">
+
+        <form action="" name="userRegisterForm" ng-submit="onSubmit(userRegisterForm.$valid)">
+            <div class="content teamRegiserDiv">
+                <div class="list">
+                    <label class="item item-input teamContentLabel">
+                        <span>用户名：</span>
+                        <input name="user_name" class="user_name" ng-model="userMsg.user_name" ng-blur="change=true" ng-focus="change=false" required type="text" placeholder="请输入用户名">
+                        <span ng-show="submitted && userRegisterForm.user_name.$invalid">
+                            <i ng-show="userRegisterForm.user_name.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userRegisterForm.user_name.$error.required && change"></i>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>账 号：</span>
+                        <input name="user_leader_email" class="user_leader_email" ng-model="userMsg.user_leader_email" ng-blur="change=true" ng-focus="change=false" required type="email" placeholder="请输入账号（邮箱）">
+                        <span ng-show="submitted && userRegisterForm.user_leader_email.$invalid">
+                            <i ng-show="userRegisterForm.user_leader_email.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <!--验证账号是否存在-->
+                        <span ng-show="emailCorrect">
+                            <span style="color: red;" ng-show="userRegisterForm.user_leader_email.$error.required">该账号已存在</span>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userRegisterForm.user_leader_email.$error.required && change"></i>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userRegisterForm.user_leader_email.$error.email"></i>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>密 码：</span>
+                        <input name="user_passwd" class="user_passwd" ng-model="userMsg.user_passwd" ng-minlength="6" ng-maxlength="16" ng-blur="change=true" ng-focus="change=false" required type="password" placeholder="请输入密码">
+                        <span ng-show="submitted && userRegisterForm.user_passwd.$invalid">
+                            <i ng-show="userRegisterForm.user_passwd.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userRegisterForm.user_passwd.$error.required && change"></i>
+                        <!--密码长度验证-->
+                        <span style="color: red" ng-show="userRegisterForm.user_passwd.$invalid">
+                            <span ng-show="userRegisterForm.user_passwd.$error.minlength">密码长度不小于6</span>
+                            <span ng-show="userRegisterForm.user_passwd.$error.maxlength">密码长度不超过16</span>
+                        </span>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>确认密码：</span>
+                        <input class="user_repasswd" ng-model="userMsg.user_repasswd" ng-blur="change=true" ng-focus="change=false" required type="password" placeholder="请再次输入密码">
+                        <!--验证两次密码是否一致-->
+                        <span style="color: red" ng-show="user_repasswd_correct">两次密码输入不一致</span>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>电话号码：</span>
+                        <input name="user_leader_tel" class="user_leader_tel" ng-model="userMsg.user_leader_tel" ng-minlength="11" ng-pattern="/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/"  ng-blur="change=true" ng-focus="change=false" required type="text" placeholder="请输入负责人电话号码">
+                        <span ng-show="submitted && userRegisterForm.user_leader_tel.$invalid">
+                            <i ng-show="userRegisterForm.user_leader_tel.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userRegisterForm.user_leader_tel.$error.required && change"></i>
+                        <!--判断是否输入合法的电话号码-->
+                        <i class="icon ion-close-circled loginNumConfirm" ng-if="(userRegisterForm.user_leader_tel.$error.minlength||userRegisterForm.user_leader_tel.$error.maxlength||userRegisterForm.user_leader_tel.$error.pattern)&&userRegisterForm.user_leader_tel.$touched"></i>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>用户介绍：</span>
+                        <input name="user_introduce" class="user_introduce" ng-model="userMsg.user_introduce" ng-minlength="10" ng-maxlength="20" ng-blur="change=true" ng-focus="change=false" required type="text" placeholder="请输入个性签名">
+                        <span ng-show="submitted && userRegisterForm.user_introduce.$invalid">
+                            <i ng-show="userRegisterForm.user_introduce.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userRegisterForm.user_introduce.$error.required && change"></i>
+                        <!--密码长度验证-->
+                        <span style="color: red" ng-show="userRegisterForm.user_introduce.$invalid">
+                            <span ng-show="userRegisterForm.user_introduce.$error.minlength">字数不小于10</span>
+                            <span ng-show="userRegisterForm.user_introduce.$error.maxlength">字数不超过20</span>
+                        </span>
+                    </label>
+                    <!--单选框男女-->
+                    <div class="redioBox">
+                        <ion-radio ng-repeat="item in clientSideList"
+                                   ng-value="item.value"
+                                   ng-model="userMsg.clientSide"
+                                   ng-change="serverSideChange(item)"
+                                   name="role" class="redio">
+                            {{item.text}}
+                        </ion-radio>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <div class="padding">
+            <button type="button" ng-click="hideUserRegister(userMsg)"  class="button button-block button-calm">注册</button>
+        </div>
+    </ion-content>
+</ion-modal-view>

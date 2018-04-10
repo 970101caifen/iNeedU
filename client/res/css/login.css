@@ -1,0 +1,63 @@
+.loginTitle{
+    width: 100%;
+    height: 80px;
+    padding-top: 40px;
+    text-align: center;
+    color: orangered;
+}
+.user,.passwd{
+    width: 80%;
+    margin-left: 10%;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+.user{
+    border-top: 1px solid white;
+}
+.userIcon,.passwdIcon{
+    font-size: 30px;
+    width: 14%;
+}
+.userInput,passwdInput{
+    width: 70%;
+}
+.loginBtnDiv{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+}
+.jumpRegisterDiv{
+    margin-left: 36%;
+}
+.loginTeamRadio,.loginUserRadio{
+    font-size: 20px;
+}
+.loginNumConfirm,.loginPasswdConfirm{
+    color: red;
+}
+/*单选框样式*/
+.redioBox{
+    width: 90%;
+}
+.redio{
+    width:  86px;
+    display: inline-block;
+    border-bottom:1px solid white;
+    border-left:1px solid white;
+    border-right:1px solid white;
+    height: 50px;
+    float: right;
+}
+.jumpLoginBtnBox{
+    width: 100%;
+    margin-top: 100px;
+    margin-left: 40%;
+}
+.userRegisterBtnBox{
+    width: 100%;
+    margin-left: 38%;
+}
+.teamRegisterBtnBox{
+    width: 100%;
+    margin-left: 38%;
+}

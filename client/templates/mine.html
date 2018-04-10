@@ -1,9 +1,105 @@
 <ion-view >
-    <ion-header-bar align-title="center" class="bar-positive" style="background-color: #373b3e">
+    <ion-header-bar align-title="center" class="bar-positive" style="background-color:#8ba34c;">
+        <h1 class="title" style="color: white;">我的</h1>
 
-        <h1 class="title">我的</h1>
     </ion-header-bar>
     <ion-content>
-        我
+        <div ng-controller="mineCtrl">
+            <!--未登录显示-->
+            <div ng-show="isLogin">
+                <div class="jumpLoginBtnBox">
+                    <a class="button button-clear button-balanced" ng-click="showLogin()">请登录</a>
+                </div>
+                <div class="userRegisterBtnBox">
+                    <a class="button button-clear button-balanced" ng-click="showUserRegister()">个人注册</a>
+                </div>
+                <div class="teamRegisterBtnBox">
+                    <a class="button button-clear button-balanced" ng-click="showTeamRegister()">团队注册</a>
+                </div>
+            </div>
+            <!--提交登录后是用户显示-->
+            <div ng-show="isUserLogin" ng-controller="TitleController">
+                <!--头像部分-->
+                <div class="mineHeadDiv" ng-controller="userMsgCtrl">
+                    <div class="mineHeadImgDiv"><img src="res/images/icon.png" alt=""></div>
+                    <div class="mineHeadNameDiv" ng-model="user_name">{{user_name}}</div>
+                </div>
+                <div class="mineUserMsgDiv">
+                    <ul>
+                        <li>
+                            <p><i class="icon ion-android-star-half"></i></p>
+                            积分
+                        </li>
+                        <li>
+                            <p><i class="icon ion-android-favorite-outline"></i></p>
+                            <a ng-click="toUserAttention()">关注</a>
+                        </li>
+                        <li>
+                            <p><i class="icon ion-android-volume-up"></i></p>
+                            <a ng-click="toUserInform()">通知</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="mineLine"></div>
+                <div class="content ionic-pseudo">
+                    <div class="list">
+                        <!--头像下的列表部分-->
+                        <a class="item item-icon-left" ng-click="toUserMsg()">
+                            <i class="icon icon ion-android-list"></i>
+                            我的信息
+                        </a>
+
+                        <a class="item item-icon-left" ng-click="toVolunteerCourse()">
+                            <i class="icon ion-android-happy"></i>
+                            志愿历程
+                        </a>
+
+                        <a class="item item-icon-left" href="#">
+                            <i class="icon ion-navicon-round"></i>
+                            平台通知
+                        </a>
+                        <a class="item item-icon-left mineUserA4"  ng-click="showSetLoginStatic()">
+                            <i class="icon ion-gear-b"></i>
+                            设置
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!--提交登录后是团队显示-->
+            <div ng-show="isTeamLogin" ng-controller="TitleController">
+                <!--头像部分-->
+                <div class="mineHeadDiv">
+                    <div class="mineHeadImgDiv"><img src="res/images/icon.png" alt=""></div>
+                    <div class="mineHeadNameDiv">{{team_name}}</div>
+                </div>
+
+                <div class="mineLine"></div>
+                <div class="content ionic-pseudo">
+                    <div class="list">
+                        <!--头像下的列表部分-->
+                        <a class="item item-icon-left" ng-click="toTeamMsg()">
+                            <i class="icon icon ion-android-list"></i>
+                            团队信息
+                        </a>
+                        <a class="item item-icon-left" ng-click="toTeamInform()">
+                            <i class="icon ion-ios-chatboxes-outline"></i>
+                            团队消息
+                        </a>
+                        <a class="item item-icon-left" ng-click="showTeamActivity()">
+                            <i class="icon ion-android-happy"></i>
+                            团队活动
+                        </a>
+                        <a class="item item-icon-left" href="#">
+                            <i class="icon ion-navicon-round"></i>
+                            平台通知
+                        </a>
+                        <a class="item item-icon-left mineUserA4" ng-click="showSetLoginStatic()">
+                            <i class="icon ion-ios-gear-outline"></i>
+                            设置
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </ion-content>
 </ion-view>

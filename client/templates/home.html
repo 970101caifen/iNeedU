@@ -1,14 +1,70 @@
 <ion-view >
-    <ion-header-bar align-title="left" class="bar-positive" style="background-color: #373b3e">
+    <ion-header-bar align-title="left" class="bar-positive" style="background-color:#8ba34c;">
 
-        <h1 class="title">iNeedU</h1>
-        <div class="buttons" ng-controller="TitleController">
-            <a class="button button-icon icon ion-search headerIcon" ng-click="searchAction()"></a>
-            <!--<a class="button button-icon icon  ion-plus-round headerIcon" ng-click="addAction($event)"></a>-->
+        <h1 class="title" style="color: white;">iNeedU</h1>
+        <div class="buttons">
+            <a class="button button-icon icon ion-search headerIcon"></a>
         </div>
-
     </ion-header-bar>
-    <ion-content class="padding">
-        首页.....
+    </ion-header -bar>
+    <ion-content class="padding" ng-controller="chooseSchoolTeamToList">
+        <!-- 学校分类、团队分类开始 -->
+        <label class="item item-input item-select"
+            <div class="input-label">
+                学校
+            </div>
+            <select >
+                <option ng-repeat="item in school" ng-click="updata(item.id)">{{item.name}}</option>
+            </select>
+        </label>
+
+        <label class="item item-input item-select">
+            <div class="input-label">
+                团队
+            </div>
+            <select>
+                <option ng-repeat="item in team">{{item.name}}</option>
+            </select>
+        </label>
+
+        <!-- 学校分类、团队分类结束 -->
+        <!--  分类图标开始-->
+        <!--  <div class="sectionAll">
+             <div class="sectionAll_item">1</div>
+             <div class="sectionAll_item">2</div>
+             <div class="sectionAll_item">3</div>
+             <div class="sectionAll_item">4</div>
+         </div> -->
+        <!--  分类图标开始-->
+
+        <!--列表展示开始 -->
+        <div class="listAll" ng-repeat="item in array" ng-controller="ActivityInfoPage">
+            <!--这儿有个头像点击跳转团队页面的控制器-->
+            <div class="list_head" ng-click="toTeamPage(item)">
+                <div class="list_head_img">
+                    <img src="res/images/gy1.jpg" alt="" style="width: 80px;height: 70px;">
+                </div>
+            </div>
+            <!-- 这儿有个控制器跳转活动详情 -->
+            <div class="list_contain" ng-click="toActivityPage(item)">
+                <div class="list_item_name">{{item.activity_title}}</div>
+                <div class="list_item_count">
+                    <div class="ion-person-stalker"></div>
+                    <div class="list_item_person">{{item.activity_need_numbers}}人</div>
+                </div>
+                <div class="list_item_count">
+                    <div class="list_time">
+                        <div class="ion-clock"></div>
+                        <div class="list_item_person">{{item.activity_start_datatime  | date:'yyyy年MM月dd日'}}</div>
+                    </div>
+                    <!-- <div class="active_plan">
+                        <div class="ddd"></div>
+                        <div>{{item.activity_start_datatime  | date:'yyyy年MM月dd日'}}</div>
+
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!--列表展示开始 -->
     </ion-content>
 </ion-view>

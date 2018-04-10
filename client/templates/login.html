@@ -1,0 +1,54 @@
+<ion-modal-view>
+    <ion-header-bar align-title="center" class="bar-positive"  style="background-color:#8ba34c;">
+        <a class="button icon ion-chevron-left" ng-click="login.hide()" style="background-color:#8ba34c;border: 1px solid #8ba34c;"></a>
+        <h1 class="title" style="color: white;">登录</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="loginConfirm">
+        <!--没有登录就显示登录页面-->
+        <div>
+            <h3 class="loginTitle">iNeedU</h3>
+            <!--<form action="" name="loginForm"  ng-submit="onSubmit(loginForm.$valid)">-->
+            <div class="content">
+                <div class="list">
+                    <label class="item item-input user">
+                        <i class="icon ion-person userIcon"></i>
+                        <input name="email" type="email" ng-model="user.email" ng-blur="change=true" ng-focus="change=false" required placeholder="请输入账号（邮箱）">
+                        <i class="icon ion-close-circled loginNumConfirm" ng-model="emailCorrect" ng-show="emailCorrect"></i>
+                        <span ng-show="accountVerification">账号被冻结或还未经验证</span>
+                        <span ng-show="submitted && loginForm.email.$invalid && emailCorrect">
+                                <i class="icon ion-close-circled loginNumConfirm" ng-show="loginForm.email.$error.required"></i>
+                            </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="loginForm.email.$error.required && change"></i>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="loginForm.email.$error.email"></i>
+                    </label>
+                    <label class="item item-input passwd">
+                        <i class="icon ion-ios-locked passwdIcon"></i>
+                        <input name="passwd" ng-model="user.passwd" class="passwdInput" type="password" ng-blur="change=true" ng-focus="change=false" required placeholder="请输入密码">
+                        <i class="icon ion-close-circled loginNumConfirm" ng-model="passwdCorrect" ng-show="passwdCorrect"></i>
+                        <span ng-show="submitted && loginForm.passwd.$invalid && paasswdCorrect">
+                                <i ng-show="loginForm.passwd.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                            </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="loginForm.passwd.$error.required && change"></i>
+                    </label>
+                    <!--单选框-->
+                    <div class="redioBox">
+                        <ion-radio ng-repeat="item in clientSideList"
+                                   ng-value="item.value"
+                                   ng-model="user.clientSide"
+                                   ng-change="serverSideChange(item)"
+                                   name="role" class="redio">
+                            {{item.text}}
+                        </ion-radio>
+                    </div>
+
+                </div>
+            </div>
+            </form>
+            <div class="padding loginBtnDiv">
+                <button ng-click="hideLogin(user)"  class="button button-block button-calm" >登录</button>
+            </div>
+        </div>
+
+
+    </ion-content>
+</ion-modal-view>

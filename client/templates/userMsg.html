@@ -1,0 +1,85 @@
+<ion-view >
+    <ion-header-bar align-title="center" class="bar-calm header" style="background-color:#8ba34c;">
+        <a class="button icon ion-chevron-left" ng-click="userMsgback()" style="background-color:#8ba34c;border: 1px solid #8ba34c;"></a>
+        <h1 class="title" style="color: white;">我的信息</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="userMsgCtrl">
+        <form action="" name="userMsgForm" ng-submit="onSubmit(userMsgForm.$valid)" >
+            <div class="content teamRegiserDiv">
+                <div class="list">
+                    <a class="item item-avatar" href="#" style="border: 1px solid white;">
+                        <img src="res/images/icon.png">
+                        <h2>{{user_name}}</h2>
+                        <p>{{user_introduce}}</p>
+                    </a>
+                    <label class="item item-input teamContentLabel">
+                        <span>用户名：</span>
+                        <input name="user_name" class="user_name" ng-model="user_name" ng-blur="change=true" ng-focus="change=false" required type="text">
+                        <span ng-show="notShow">{{new_user_name}}</span>
+                        <span ng-show="submitted && userMsgForm.user_name.$invalid">
+                            <i ng-show="userMsgForm.user_name.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userMsgForm.user_name.$error.required && change"></i>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>账 号：</span>
+                        <input name="user_leader_email" class="user_leader_email" ng-model="user_leader_email" ng-blur="change=true" ng-focus="change=false" required type="text">
+                        <span ng-show="updateemail" style="color:red;">账号不能修改</span>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>密 码：</span>
+                        <input name="user_passwd"  class="user_passwd" ng-model="user_passwd" ng-minlength="6" ng-maxlength="16" ng-blur="change=true" ng-focus="change=false" required type="password">
+                        <span ng-show="submitted && userMsgForm.user_passwd.$invalid">
+                            <i ng-show="userMsgForm.user_passwd.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userMsgForm.user_passwd.$error.required && change"></i>
+                        <!--密码长度验证-->
+                        <span style="color: red" ng-show="userMsgForm.user_passwd.$invalid">
+                            <span ng-show="userMsgForm.user_passwd.$error.minlength">密码长度不小于6</span>
+                            <span ng-show="userMsgForm.user_passwd.$error.maxlength">密码长度不超过16</span>
+                        </span>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>确认密码：</span>
+                        <input class="user_repasswd" ng-model="user_repasswd" ng-blur="change=true" ng-focus="change=false" required type="password">
+                        <span ng-show="submitted && userMsgForm.user_repasswd.$invalid">
+                            <i ng-show="userMsgForm.user_repasswd.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userMsgForm.user_repasswd.$error.required && change"></i>
+                        <!--验证两次密码是否一致-->
+                        <span style="color: red" ng-show="userMsgForm.user_passwd.$valid">
+                            <span ng-show="user_repasswd!=user_passwd">两次密码输入不一致</span>
+                        </span>
+                    </label>
+                    <label class="item item-input teamContentLabel1">
+                        <span>电话号码：</span>
+                        <input name="user_leader_tel" class="user_leader_tel" ng-model="user_leader_tel" ng-minlength="11" ng-pattern="/^1([358][0-9]|4[579]|66|7[0135678]|9[89])[0-9]{8}$/" ng-blur="change=true" ng-focus="change=false" required type="text">
+                        <span ng-show="submitted && userMsgForm.user_leader_tel.$invalid">
+                                <i ng-show="userMsgForm.user_leader_tel.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                            </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userMsgForm.user_leader_tel.$error.required && change"></i>
+                        <!--判断是否输入合法的电话号码-->
+                        <i class="icon ion-close-circled loginNumConfirm" ng-if="(userMsgForm.user_leader_tel.$error.minlength||userMsgForm.user_leader_tel.$error.maxlength||userMsgForm.user_leader_tel.$error.pattern)&&userMsgForm.user_leader_tel.$touched"></i>
+                    </label>
+                    <label class="item item-input">
+                        <span>用户介绍：</span>
+                        <input name="user_introduce" class="user_introduce" ng-model="user_introduce" ng-minlength="10" ng-maxlength="20" ng-blur="change=true" ng-focus="change=false" required type="text" placeholder="请输入个性签名">
+                        <span ng-show="submitted && userMsgForm.user_introduce.$invalid">
+                            <i ng-show="userMsgForm.user_introduce.$error.required" class="icon ion-close-circled loginPasswdConfirm"></i>
+                        </span>
+                        <i class="icon ion-close-circled loginNumConfirm" ng-show="userMsgForm.user_introduce.$error.required && change"></i>
+                        <!--密码长度验证-->
+                        <span style="color: red" ng-show="userMsgForm.user_introduce.$invalid">
+                            <span ng-show="userMsgForm.user_introduce.$error.minlength">字数不小于10</span>
+                            <span ng-show="userMsgForm.user_introduce.$error.maxlength">字数不超过20</span>
+                        </span>
+                    </label>
+
+                </div>
+            </div>
+        </form>
+        <div class="padding">
+            <button ng-click="updateUserMsg()" class="button button-block button-calm" type="button">修改</button>
+        </div>
+    </ion-content>
+</ion-view>

@@ -1,0 +1,30 @@
+.find_view{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+.find_row{
+    display: flex;
+    flex-direction: row;
+}
+.list_item_find{
+    width: 200px;
+    height:48px;
+    border:1px solid #ccc;
+    color: #5f5851;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 5px;
+}
+.list_item_find img{
+    margin-left: 10px;
+    width: 32px;
+    height: 32px;
+}
+.list_item_find div{
+    margin-left: 10px;
+    font-size: 14px;
+    text-align: center;
+}

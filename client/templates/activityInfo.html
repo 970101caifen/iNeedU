@@ -1,0 +1,84 @@
+<ion-view ng-controller="activityInfo">
+    <ion-header-bar class="bar bar-header bar-dark" style="background-color:#8ba34c;">
+       
+        <a class="button icon ion-chevron-left" style="background-color:#8ba34c;border: 1px solid #8ba34c;" ng-click="back()"></a>
+        <h1 class="title" style="color: white;">活动详情</h1>
+    </ion-header-bar>
+    <!-- 团队图片 -->
+    <ion-content class="padding">
+        <ion-slide-box active-slide="myActiveSlide">
+		    <ion-slide>
+		      <div class="box blue"><h1><img src="res/images/gy1.jpg" alt="" style="width: 100%;height:100%"></h1></div>
+		    </ion-slide>
+		      <ion-slide>
+		      <div class="box blue"><h1><img src="res/images/gy2.jpg" alt="" style="width: 100%;height:100%"></h1></div>
+		    </ion-slide>
+		      <ion-slide>
+		      <div class="box blue"><h1><img src="res/images/gy3.jpg" alt="" style="width: 100%;height:100%"></h1></div>
+		    </ion-slide>
+		    
+		</ion-slide-box>
+		<!-- 活动名称卡片 -->
+		<div class="card">
+  			<div class="item item-text-wrap">
+    			{{obj.activity_title}}
+  			</div>
+
+		</div>
+		<!-- 卡片列表 -->
+		<div class="list card">
+			<a href="" class="item item-icon-left">
+				<i class="icon ion-flag"></i>
+				团队：
+				<span style="float: right;">{{obj.team_name}}</span>
+			</a>
+
+			<a href="" class="item item-icon-left">
+				<i class="icon ion-location"></i>
+				活动地点：
+				<span style="float: right;">{{obj.activity_site}}</span>
+			</a>
+
+			<a href="" class="item item-icon-left">
+				<i class="icon ion-clock"></i>
+				活动时间:
+				<!-- <span style="float: right;">3月25日-4月4日</span> -->
+				<!-- {{item.activity_start_datatime  | date:'yyyy年MM月dd日'}} -->
+				<span style="float: right;">
+				{{obj.activity_create_time  | date:'yyyy-MM-dd'}}
+				~{{obj.activity_end_datatime  | date:'yyyy-MM-dd'}}</span>
+			</a>
+
+			
+
+			<a href="" class="item item-icon-left">
+				<i class="icon ion-person-stalker"></i>
+				报名人数:
+				<span style="float: right;">{{obj.activity_registration_numbers}}
+				/{{obj.activity_need_numbers}}</span>
+			</a>  
+		</div>
+		<!-- 活动内容单独一个盒子 -->
+		<div class="activity_info">
+			<span>活动介绍</span>
+			<p>{{obj.activity_content}}</p>
+		</div>
+		
+  		<button ng-show="isUser"  ng-click="joinus(obj.activity_registration_numbers+1)"  class="button button-positive" style="width: 100%">我要参与</button>
+         <button ng-show="isTeam" ng-click="checkRegister(obj.activity_id)" class="button button-positive" style="width: 100%">查看报名情况</button>
+		
+		<!-- <div ng-show="isTeam" class="list list-inset" ng-controller="userjoinActivityInfoCtrl">
+
+                    <div class="item" ng-repeat='item1 in userjoin'>
+                      {{item.user_name}}
+                    </div>
+          </div> -->
+          <hr>
+         <div ng-repeat='item1 in userjoin'>
+         	<p>报名情况</p><br>
+			<p>{{item1.user_name}}:{{item1.user_tel}}</p><br>
+
+         </div>
+
+    </ion-content>
+</ion-view>

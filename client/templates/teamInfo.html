@@ -1,0 +1,90 @@
+<ion-view ng-controller="teamController">
+    <ion-header-bar class="bar bar-header bar-dark" style="background-color:#8ba34c;">
+    	<a class="button icon ion-chevron-left" ng-click="back()" style="background-color:#8ba34c;border: 1px solid #8ba34c;"></a>
+        <h1 class="title">{{obj[0].team_name}}</h1>
+    </ion-header-bar>
+    <!-- 团队图片 -->
+    <ion-content class="padding">
+        <div class="team_headImg">
+        	<img src="res/images/gy2.jpg" alt="" style="width: 100%;height:100%">  
+        </div>
+	<!-- 团队信息简介 -->
+			<div class="list">
+
+				<a class="item item-icon-left" href="#">
+				<i class="icon ion-person"></i>
+				{{obj[0].team_leader_name}}
+
+				<span class="item-note">
+				团队负责人
+				</span>
+				</a>
+
+				
+
+				<a class="item item-icon-left" href="#">
+				<i class="icon ion-university"></i>
+				{{obj[0].team_byschool}}
+
+				<span class="item-note">
+				团队所在学校
+				</span>
+				</a>
+
+
+
+				<a class="item item-icon-left item-icon-right" href="#">
+				<i class="icon ion-iphone"></i>
+				{{obj[0].team_leader_tel}}
+				<i class="icon ion-ios-telephone-outline"></i>
+				</a>
+
+						
+
+				<a class="item item-icon-left" href="#">
+				<i class="icon ion-email"></i>
+				{{obj[0].team_leader_email}}
+
+				<span class="item-note">
+				邮件
+				</span>
+				</a>
+
+
+				<a class="item item-icon-left" href="#">
+				<i class="icon ion-clock"></i>
+				{{obj[0].team_founding_time  | date:'yyyy-MM-dd'}}
+				<span class="item-note">
+				团队创建时间
+				</span>
+				</a>
+
+
+			</div>
+
+	<!-- 具体活动列表 -->
+   <!--  <div class="activity_list" ng-repeat="item in obj">
+		<div class="activity_headDiv">{{item.activity_title}}</div>
+		<div class="activity_contain">
+			<div class="activity_text">{{item.activity_content}}</div>
+			<div class="activity_time_new">
+				<div class="activity_time">3分钟</div>
+				<div class="icon ion-chatbox-working"></div>
+			</div>
+		</div>
+    </div> -->
+	
+	<div class="list" ng-repeat="item in obj">
+        <a class="item item-thumbnail-left" href="">
+          <img src="res/images/gy3.jpg">
+          <h2>{{item.activity_title}}</h2>
+          <p>{{item.activity_content}}</p>
+        </a>
+      </div>
+
+	<!-- http://www.runoob.com/try/demo_source/siamese-dream.jpg
+	http://www.runoob.com/try/demo_source/nevermind.jpg
+	http://www.runoob.com/try/demo_source/dookie.jpg
+	http://www.runoob.com/try/demo_source/license-to-ill.jpg -->
+    </ion-content>
+</ion-view>

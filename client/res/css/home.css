@@ -1,0 +1,87 @@
+.sectionAll{
+	width: 100%;
+	height: 100px;
+	/*background-color: pink;*/
+	display: flex;
+	flex-direction:row;
+	justify-content: center;
+	align-items: center;
+}
+.sectionAll_item{
+	width: 60px;
+	height: 60px;
+	border-radius: 50px;
+	border: 1px solid red;
+	margin: 10px;
+	background-color: pink;
+
+}
+.listAll{
+	width: 100%;
+	height: 150px;
+	border: 1px solid #ccc;
+	/*background: pink;*/
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+	margin-top:20px;
+	border-radius: 10px;
+
+}
+.list_head{
+	width: 100px;
+	height: 80px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	/*background-color: yellow;*/
+}
+.list_head_img {
+	width: 80px;
+	height: 70px;
+	background-color: yellow;
+}
+/*img{
+	width: 80px;
+	height: 70px;
+}*/
+
+
+.list_contain{
+	height: 70px;
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+
+}
+.list_item_name{
+	display: flex;
+	font-size: 16px;
+	color: 	#ffa500;
+	margin-left: 20px;
+}
+.list_item_count{
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	font-size: 16px;
+	margin-left: 20px;
+}
+.list_item_person{
+	padding-left: 30px;
+	color:#3cb371;
+}
+
+.list_time{
+	display: flex;
+	flex-direction: row
+}
+
+.active_plan{
+	padding-left: 60px;
+	color: #6495ed;
+
+}
+.ddd{
+	height: 10px
+}

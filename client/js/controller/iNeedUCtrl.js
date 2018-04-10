@@ -1,6 +1,6 @@
 app.controller("iNeedUCtrl",function ($scope,$http) {
 
-    var url ="http://localhost:8088/index";
+    /*var url ="http://localhost:8088/index";
 
 
     $http({
@@ -11,6 +11,6 @@ app.controller("iNeedUCtrl",function ($scope,$http) {
 
     }, function errorCallback(response) {
         // 请求失败执行代码
-    });
+    });*/
 
 });

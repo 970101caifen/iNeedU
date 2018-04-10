@@ -1,0 +1,45 @@
+<ion-modal-view>
+    <ion-header-bar align-title="center" class="bar-positive" style="background-color:#8ba34c;">
+        <a class="button icon ion-chevron-left" ng-click="releaseActivities.hide()" style="background-color:#8ba34c;border: 1px solid #8ba34c;"></a>
+        <h1 class="title" style="color: white;">活动发布</h1>
+    </ion-header-bar>
+    <ion-content>
+        <!--发布信息-->
+            <div class="list releaseConBox">
+                <label class="item item-input activity_title_label">
+                    <span>活动题目：</span>
+                    <input name="activity_title" class="activity_title" ng-model="activity.activity_title" ng-blur="change=true" ng-focus="change=false" required type="text"  placeholder="请输入活动题目" />
+                    <i ng-model="activity_title" ng-show="activity_titleCorrect" class="icon ion-close-circled loginNumConfirm"></i>
+                </label>
+                <label class="item item-input">
+                    <span>活动地点：</span>
+                    <input name="activitySite" class="activitySite" ng-model="activity.activitySite" ng-blur="change=true" ng-focus="change=false" required type="text" placeholder="请输入活动地点" />
+                    <i ng-model="activitySite" ng-show="activitySiteCorrect" class="icon ion-close-circled loginNumConfirm"></i>
+                </label>
+                <span class="activityMsgSpan">活动内容：</span>
+                <label class="item item-input activityMsgLabel">
+                    <textarea name="activityMsg" class="activityMsg" ng-model="activity.activityMsg" ng-blur="change=true" ng-focus="change=false" required rows="8" placeholder="请输入活动内容"></textarea>
+                    <i ng-model="activityMsg" ng-show="activityMsgCorrect" class="icon ion-close-circled loginNumConfirm"></i>
+                </label>
+                <label class="item item-input">
+                    <span>活动开始时间：</span>
+                    <input name="activityStartTime" class="activityStartTime" ng-model="activity.activityStartTime" ng-blur="change=true" ng-focus="change=false" required type="text" placeholder="请输入发布内容"/>
+                    <i ng-model="activityStartTime" ng-show="activityStartTimeCorrect" class="icon ion-close-circled loginNumConfirm"></i>
+                </label>
+                <label class="item item-input">
+                    <span>活动结束时间：</span>
+                    <input name="activityEndTime" class="activityEndTime" ng-model="activity.activityEndTime" ng-blur="change=true" ng-focus="change=false" required type="text" placeholder="请输入发布内容"/>
+                    <i ng-model="activityEndTime" ng-show="activityEndTimeCorrect" class="icon ion-close-circled loginNumConfirm"></i>
+                </label>
+                <label class="item item-input">
+                    <span>活动招聘人数：</span>
+                    <input name="activityNeedNum" class="activityNeedNum" ng-model="activity.activityNeedNum" ng-blur="change=true" ng-focus="change=false" required type="number" placeholder="请输入活动招聘人数"/>
+                    <i ng-model="activityNeedNum" ng-show="activityNeedNumCorrect" class="icon ion-close-circled loginNumConfirm"></i>
+                </label>
+
+            </div>
+            <div class="releaseBtnBox">
+                <button ng-click="hideReleaseActivities(activity)" class="releaseBtn button button-clear button-balanced">发布</button>
+            </div>
+    </ion-content>
+</ion-modal-view>

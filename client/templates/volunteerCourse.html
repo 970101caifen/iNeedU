@@ -1,0 +1,30 @@
+<ion-view >
+    <ion-header-bar align-title="center" class="bar-positive"  style="background-color:#8ba34c;">
+        <a class="button icon ion-chevron-left" ng-click="volunteerCourseback()" style="background-color:#8ba34c;border: 1px solid #8ba34c;"></a>
+        <h1 class="title" style="color: white;">志愿历程</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="volunteerCourseCtrl">
+        <div class="listAll" ng-repeat="item in array">
+            <!--这儿有个头像点击跳转团队页面的控制器-->
+            <div class="list_head" ng-click="toTeamPage(item)">
+                <div class="list_head_img">
+                    <img src="res/images/gy1.jpg" alt="" style="width: 80px;height: 70px;">
+                </div>
+            </div>
+            <!-- 这儿有个控制器跳转活动详情 -->
+            <div class="list_contain" ng-click="toActivityPage(item)">
+                <div class="list_item_name">{{item.activity_title}}</div>
+                <div class="list_item_count">
+                    <div class="ion-person-stalker"></div>
+                    <div class="list_item_person">{{item.activity_need_numbers}}人</div>
+                </div>
+                <div class="list_item_count">
+                    <div class="list_time">
+                        <div class="ion-clock"></div>
+                        <div class="list_item_person">{{item.activity_start_datatime  | date:'yyyy年MM月dd日'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
